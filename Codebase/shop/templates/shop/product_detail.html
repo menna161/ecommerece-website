@@ -1,0 +1,45 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+<main class="product-detail">
+    <div class="container">
+        <header class="product-detail-header">
+            <h1 class="product-title">{{ product.name }}</h1>
+            <p class="product-price">${{ product.price }}</p>
+        </header>
+        <section class="product-detail-body">
+            <div class="product-image">
+                {% if product.image %}
+                <img id="main-image" src="{{ product.image.url }}" alt="{{ product.name }}">
+                {% endif %}
+            </div>
+            <div class="product-info">
+                <p class="product-description">{{ product.description }}</p>
+                <p class="product-stock">{{ product.stock_quantity }} in stock</p>
+                <a href="#" class="button add-to-cart">Add to Cart</a>
+            </div>
+        </section>
+        <section class="product-additional-images">
+            <h2>Additional Images</h2>
+            <div class="additional-images">
+                {% for image in product.images.all %}
+                <img class="thumbnail" src="{{ image.image.url }}" alt="{{ product.name }}">
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mainImage = document.getElementById('main-image');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                mainImage.src = this.src;
+            });
+        });
+    });
+</script>
+{% endblock %}

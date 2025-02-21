@@ -1,0 +1,17 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+<main class="auth-page">
+    <div class="container">
+        <h1 class="auth-title">Logout</h1>
+        <p>Are you sure you want to logout?</p>
+        <form method="post" class="auth-form">
+            {% csrf_token %}
+            <button type="submit" class="button auth-button">Logout</button>
+        </form>
+        <p class="auth-switch">
+            <a href="{% url 'home' %}">Return to Home</a>.
+        </p>
+    </div>
+</main>
+{% endblock %}

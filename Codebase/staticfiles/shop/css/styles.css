@@ -1,0 +1,9 @@
+/* shop/static/shop/styles.css */
+a {
+    color: blue;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: darkblue;
+}
